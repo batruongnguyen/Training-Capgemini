@@ -1,0 +1,40 @@
+<template>
+    <lightning-card>
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer slds-var-m-bottom_large">
+            <thead>
+                <tr class="slds-text-title_caps">
+                    <template for:each={__columns} for:item="column">
+                        <th key={column.fieldName}>
+                            <div>{column.label}</div>
+                        </th>
+                    </template>
+                </tr>
+            </thead>
+
+            <tbody>
+                <template lwc:if={contacts}>
+                    <template for:each={contacts} for:item="contact">
+                        <tr key={contact.Id}>
+                            <td onkeyup={handleKeyCheck}>
+                                <lightning-input data-item-id={contact.Id} type="checkbox-button" name="action" checked={contact.IsSelected} onchange={handleCheckboxChange}></lightning-input> 
+                            </td>
+                            <td>{contact.Salutation}</td>
+                            <td>{contact.FirstName}</td>
+                            <td>{contact.LastName}</td>
+                            <td>
+                                <lightning-formatted-email value={contact.Email}></lightning-formatted-email>
+                            </td>
+                            <td>
+                                <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                                    <lightning-icon icon-name="utility:call" size="x-small"></lightning-icon>
+                                    <lightning-formatted-phone value={contact.Phone}></lightning-formatted-phone>
+                                </div>
+                            </td>
+                            <td>{contact.Title}</td>
+                        </tr>
+                    </template>
+                </template>
+            </tbody>
+        </table>
+    </lightning-card>
+</template>

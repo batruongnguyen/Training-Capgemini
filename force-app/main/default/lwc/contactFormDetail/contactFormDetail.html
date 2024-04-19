@@ -1,0 +1,47 @@
+<template>
+
+    <lightning-spinner if:true={isLoading} variant="brand" size="medium" ></lightning-spinner>
+    
+    <!-- Header -->
+    <div class="slds-card__header slds-grid slds-var-m-bottom_large">
+        <header class="slds-media slds-media_center slds-has-flexi-truncate">
+            <div class="slds-media__figure">
+            <span class="slds-icon_container slds-icon-standard-account" title="account">
+                <svg class="slds-icon" aria-hidden="true">
+                    <use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+                </svg>
+                <span class="slds-assistive-text">account</span>
+            </span>
+            </div>
+            <div class="slds-media__body">
+            <h2 class="slds-text-heading_small">
+                <a href="#" class="slds-card__header-link slds-truncate" title="Accounts">
+                <span>{headerInfo}</span>
+                </a>
+            </h2>
+            </div>
+        </header>
+    </div>
+
+    <!-- Body -->
+    <div class="slds-text-align_center slds-var-m-bottom_large">
+        <span class="slds-text-heading_medium">{accountName}</span>
+        <p class="slds-text-body_regular">Please provide some basic contact information</p>
+    </div>
+
+    <template lwc:if={__showFormDetail}>
+        <!-- <c-contact-information contact={selectedContact} is-disabled={isSelected}></c-contact-information> -->
+        <c-contact-information contact={selectedContact}></c-contact-information>
+        <c-existing-contact-table contacts={existingContacts} onprocesscontact={handleProcessContact}></c-existing-contact-table>
+    </template>
+    <template lwc:elseif={__showApplication}>
+        <c-contact-application application={application}></c-contact-application>
+    </template>
+
+    <!--PAGE NAVIGATION-->
+    <div class="slds-align_absolute-center">
+        <lightning-button label={__navigateBtnName} onclick={navigatePage} variant={navigateBtnVariant}></lightning-button>
+        <lightning-button disabled={bDisableSubmit} label="Submit" onclick={submitForm} class="slds-p-horizontal_x-small" variant="brand"></lightning-button>
+    </div>
+    
+</template> 

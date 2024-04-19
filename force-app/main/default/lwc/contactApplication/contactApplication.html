@@ -1,0 +1,23 @@
+<template>
+    <div class="slds-grid slds-wrap slds-var-m-bottom_large">
+
+        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+            <lightning-input type="text" name="Name" label="Application Name" value={application.Name} required="true"></lightning-input>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+            <lightning-input type="date" name="CloseDate" label="Close Date" value={application.CloseDate} required="true"></lightning-input>
+        </div>
+
+        <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+            <lightning-combobox
+                label="Stage"
+                name="StageName"
+                options={stagePicklist}
+                value={application.StageName}
+                required="true"
+                onclick={handleStageChange}
+            ></lightning-combobox>
+        </div>
+    </div>
+</template>

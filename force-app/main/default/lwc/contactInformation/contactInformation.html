@@ -1,0 +1,47 @@
+<template>
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+                <lightning-combobox
+                    name="Salutation" 
+                    label="Salutation"
+                    options={salutationPicklist}
+                    value={contact.Salutation}
+                    disabled={contact.IsSelected}
+                ></lightning-combobox>
+            </div>
+    
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+                <lightning-input 
+                    type="email" 
+                    data-name="Email"
+                    name="Email" 
+                    label="Email"
+                    value={contact.Email} 
+                    disabled={contact.IsSelected} 
+                    required="true"
+                    onchange={handleEmailChange}
+                ></lightning-input>
+            </div>
+    
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+                <lightning-input type="text" name="FirstName" label="First Name" value={contact.FirstName} disabled={contact.IsSelected}></lightning-input>
+            </div>
+    
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+                <lightning-input type="tel" name="Phone" label="Phone" value={contact.Phone} disabled={contact.IsSelected} required="true"></lightning-input>
+            </div>
+    
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+                <lightning-input type="text" name="LastName" label="Last Name" value={contact.LastName} disabled={contact.IsSelected} required="true"></lightning-input>
+            </div>
+    
+            <div class="slds-col slds-size_1-of-2 slds-p-horizontal_medium">
+                <lightning-input name="Title" label="Title" value={contact.Title} disabled={contact.IsSelected}></lightning-input>
+            </div>
+        </div>
+    
+        <div class="slds-text-align_center slds-var-m-top_large">
+            <p class="slds-text-body_regular">Or you can select from existing contacts of this account</p>
+        </div>
+</template>
